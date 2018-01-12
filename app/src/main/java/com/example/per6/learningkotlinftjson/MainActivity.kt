@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import io.realm.Realm
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,5 +36,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d("It Worked", "onResponse: ${response?.body()}")
             }
         })
+
+        //database
+        val realm = Realm.getDefaultInstance()
     }
 }
