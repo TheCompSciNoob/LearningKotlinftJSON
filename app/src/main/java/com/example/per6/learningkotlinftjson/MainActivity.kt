@@ -1,5 +1,6 @@
 package com.example.per6.learningkotlinftjson
 
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -39,5 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         //database
         val realm = Realm.getDefaultInstance()
+        val wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
+        wordViewModel.getWordsFromDatabase()
     }
 }

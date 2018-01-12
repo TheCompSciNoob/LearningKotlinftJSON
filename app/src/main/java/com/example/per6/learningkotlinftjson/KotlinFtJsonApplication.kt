@@ -14,6 +14,7 @@ class KotlinFtJsonApplication : Application() {
         Realm.init(this)
         val config = RealmConfiguration.Builder()
                 .name("kotlinftjson.realm")
+                .deleteRealmIfMigrationNeeded()
                 .build()
         Realm.setDefaultConfiguration(config)
     }
