@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
         val api : DataMuseAPI = retrofit.create(DataMuseAPI::class.java)
-        val call : Call<List<Word>> = api.getSoundsLike("success")
+        val call : Call<List<Word>> = api.getSoundsLike("shock")
         call.enqueue(object : Callback<List<Word>> {
             override fun onFailure(call: Call<List<Word>>?, t: Throwable?) {
                 Toast.makeText(this@MainActivity, t?.message, Toast.LENGTH_SHORT).show()

@@ -14,5 +14,4 @@ class WordViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         itemView.score.text = "${word.score}"
         itemView.numSyllables.text = "${word.numSyllables}"
     }
-
 }
