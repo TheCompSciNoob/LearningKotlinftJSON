@@ -1,13 +1,11 @@
 package com.example.per6.learningkotlinftjson
 
-import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
-import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,6 +17,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //wire widgets
+        val adapter = WordAdapter(arrayListOf())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val baseUrl = "http://api.datamuse.com"
         val retrofit : Retrofit = Retrofit.Builder()
@@ -35,12 +38,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<List<Word>>?, response: Response<List<Word>>?) {
                 Log.d("It Worked", "onResponse: ${response?.body()}")
+                adapter.data = response?.body()!!
+                adapter.notifyDataSetChanged()
             }
         })
-
-        //database
-        val realm = Realm.getDefaultInstance()
-        val wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
-        wordViewModel.getWordsFromDatabase()
     }
 }

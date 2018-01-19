@@ -46,4 +46,5 @@ dependencies {
     implementation "android.arch.paging:runtime:1.0.0-alpha4-1"
     testImplementation "android.arch.core:core-testing:1.0.0"
     testImplementation "android.arch.persistence.room:testing:1.0.0"
+    compile 'com.android.support:cardview-v7:26.1.0'
 }
